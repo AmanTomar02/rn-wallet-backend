@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { initDB } from "./config/db.js";
+import { initDB} from "./config/db.js";
 import rateLimiter from "./middleware/rateLimiter.js";
 import transactionsRoute from "./routes/transactionsRoute.js";
 import job from "./config/cron.js";
@@ -35,6 +35,6 @@ app.use("/api/transactions", transactionsRoute);
 
 initDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`🚀 Server is up and running on PORT: ${PORT}`);
+    console.log("Server running...");
   });
 });
