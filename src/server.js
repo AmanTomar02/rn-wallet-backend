@@ -22,7 +22,7 @@ app.use(
 
 if (process.env.NODE_ENV === "production") job.start();
 
-app.use(rateLimiter);
+// app.use(rateLimiter);
 app.use(express.json());
 
 const PORT = process.env.PORT || 5001;
