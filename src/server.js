@@ -12,9 +12,11 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:8081", "https://wallet-api-v2r2.onrender.com"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    origin: [
+      "http://localhost:8081",
+      "https://wallet-api-v2r2.onrender.com",
+      "https://rn-wallet-backend-n8z5.onrender.com",
+    ],
   })
 );
 
