@@ -19,13 +19,22 @@
 
 // export default ratelimiter;
 
+import ratelimit from "../config/upstash.js";
 
 const ratelimiter = async (req, res, next) => {
   try {
-    next(); // bypass for now
-  } catch (error) {
-    console.log("Rate limit disabled:", error.message);
+    const { success } = await ratelimit.limit("global");
+
+    if (!success) {
+      return res
+        .status(429)
+        .json({ message: "Too many requests, slow down bro!" });
+    }
+
     next();
+  } catch (error) {
+    console.log("Rate Limit Error:", error.message);
+    next(); // ✅ allow even if redis fails
   }
 };
 
